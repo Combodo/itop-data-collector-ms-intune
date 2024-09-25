@@ -39,6 +39,33 @@
 			<type>TapeLibrary</type>
 		</defaults>
 	</itopmodelintunecollector>
+
+	<!-- OS families -->
+	<itoposfamilyintunecollector>
+		<jsonfile>data/testManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>operatingSystem</primary_key>
+			<name>operatingSystem</name>
+		</fields>
+		<defaults/>
+	</itoposfamilyintunecollector>
+
+	<!-- OS Versions -->
+	<itoposversionintunecollector>
+		<jsonfile>data/testManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>primary_key</primary_key>
+			<osfamily_id>operatingSystem</osfamily_id>
+			<name>osVersion</name>
+		</fields>
+		<defaults>
+			<primary_key>key</primary_key>
+			<type>TapeLibrary</type>
+		</defaults>
+	</itoposversionintunecollector>
+
 	<!-- Class collection sequence -->
 	<collectors_launch_sequence type="array">
 		<!-- iTop Brands -->
@@ -53,6 +80,18 @@
 			<enable>yes</enable>
 			<rank>2</rank>
 		</collector>
+		<!-- iTop OS Families -->
+		<collector>
+			<name>iTopOSFamilyInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>3</rank>
+		</collector>
+		<!-- iTop OS Versions -->
+		<collector>
+			<name>iTopOSVersionInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>4</rank>
+		</collector>
 	</collectors_launch_sequence>
 
 	<!-- Synchronization parameters -->
@@ -63,6 +102,8 @@
 	<json_placeholders>
 		<itopbrand_synchro_name>$name_prefix$ Brands $name_postfix$ - $ms_tenantid_short$</itopbrand_synchro_name>
 		<itopmodel_synchro_name>$name_prefix$ Models $name_postfix$ - $ms_tenantid_short$</itopmodel_synchro_name>
+		<itoposfamily_synchro_name>$name_prefix$ OS Families $name_postfix$ - $ms_tenantid_short$</itoposfamily_synchro_name>
+		<itoposversion_synchro_name>$name_prefix$ OS Versions $name_postfix$ - $ms_tenantid_short$</itoposversion_synchro_name>
 		<synchro_status>production</synchro_status>
 		<full_load_interval>0</full_load_interval><!-- 7 days (in seconds): 7*24*60*60 -->
 	</json_placeholders>
