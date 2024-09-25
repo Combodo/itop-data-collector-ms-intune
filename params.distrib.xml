@@ -18,7 +18,7 @@
 		<jsonfile>data/ManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
-			<primary_key>id</primary_key>
+			<primary_key>manufacturer</primary_key>
 			<name>manufacturer</name>
 		</fields>
 		<defaults/>
@@ -29,12 +29,13 @@
 		<jsonfile>data/testManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
-			<primary_key>id</primary_key>
+			<primary_key>primary_key</primary_key>
 			<brand_id>manufacturer</brand_id>
 			<name>model</name>
 			<type>type</type>
 		</fields>
 		<defaults>
+			<primary_key>key</primary_key>
 			<type>TapeLibrary</type>
 		</defaults>
 	</itopmodelintunecollector>

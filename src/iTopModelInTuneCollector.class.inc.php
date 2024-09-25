@@ -35,5 +35,19 @@ class iTopModelInTuneCollector extends JsonCollector
         }
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function Fetch(): array | false
+    {
+        $aData = parent::Fetch();
+        if ($aData !== false) {
+            // Then process each collected status
+            $aData['primary_key'] = $aData['brand_id'].' - '.$aData['name'];
+        }
+
+        return $aData;
+
+    }
 }
 
