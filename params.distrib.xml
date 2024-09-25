@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Default values for parameters. Do NOT alter this file, use params.local.xml instead -->
+<parameters>
+	<!-- Microsoft links -->
+	<microsoft_login_url>https://login.microsoftonline.com/</microsoft_login_url>
+	<microsoft_auth_mode>/oauth2/token</microsoft_auth_mode>
+	<microsoft_resource>https://graph.microsoft.com/</microsoft_resource>
+
+	<!-- Client's credentials -->
+	<ms_clientid></ms_clientid>
+	<ms_clientsecret></ms_clientsecret>
+	<ms_tenantid></ms_tenantid>
+	<ms_tenantid_short></ms_tenantid_short>
+
+	<!-- Brands -->
+	<itopbrandintunecollector>
+		<ms_class>managedDevices</ms_class>
+		<api_version>1.0</api_version>
+		<jsonfile>data/ManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<name>manufacturer</name>
+		</fields>
+		<defaults/>
+	</itopbrandintunecollector>
+
+	<!-- Models -->
+	<itopmodelintunecollector>
+		<jsonfile>data/testManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<name>model</name>
+			<type>type</type>
+		</fields>
+		<defaults>
+			<type>TapeLibrary</type>
+		</defaults>
+	</itopmodelintunecollector>
+	<!-- Class collection sequence -->
+	<collectors_launch_sequence type="array">
+		<!-- iTop Brands -->
+		<collector>
+            <name>iTopBrandInTuneCollector</name>
+            <enable>no</enable>
+            <rank>1</rank>
+		</collector>
+		<!-- iTop Models -->
+		<collector>
+			<name>iTopModelInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>2</rank>
+		</collector>
+	</collectors_launch_sequence>
+
+	<!-- Synchronization parameters -->
+	<contact_to_notify></contact_to_notify>
+	<synchro_user></synchro_user>
+	<name_prefix>InTune</name_prefix>
+	<name_postfix>Discovery</name_postfix>
+	<json_placeholders>
+		<itopbrand_synchro_name>$name_prefix$ Brands $name_postfix$ - $ms_tenantid_short$</itopbrand_synchro_name>
+		<itopmodel_synchro_name>$name_prefix$ Models $name_postfix$ - $ms_tenantid_short$</itopmodel_synchro_name>
+		<synchro_status>production</synchro_status>
+		<full_load_interval>0</full_load_interval><!-- 7 days (in seconds): 7*24*60*60 -->
+	</json_placeholders>
+
+	<!-- mapping tables -->
+	<user_language_mapping type="array">
+		<pattern>//EN US</pattern>
+		<pattern>/en/EN US</pattern>
+		<pattern>/en-US/EN US</pattern>
+		<pattern>/.*/EN US</pattern>
+	</user_language_mapping>
+
+</parameters>
