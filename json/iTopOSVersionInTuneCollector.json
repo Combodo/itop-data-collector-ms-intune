@@ -22,7 +22,7 @@
             "reconcile": "1",
             "update_policy": "master_locked",
             "reconciliation_attcode": "name",
-            "finalclass": "SynchroAttExtKey"
+            "finalclass": "SynchroAttribute"
         },
         {
             "attcode": "name",
