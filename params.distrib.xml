@@ -3,7 +3,7 @@
 	<!-- Microsoft links -->
 	<microsoft_login_url>https://login.microsoftonline.com/</microsoft_login_url>
 	<microsoft_auth_mode>/oauth2/token</microsoft_auth_mode>
-	<microsoft_resource>https://graph.microsoft.com/</microsoft_resource>
+	<microsoft_resource>https://graph.microsoft.com</microsoft_resource>
 
 	<!-- Client's credentials -->
 	<ms_clientid></ms_clientid>
@@ -13,9 +13,9 @@
 
 	<!-- Brands -->
 	<itopbrandintunecollector>
-		<ms_class>managedDevices</ms_class>
+		<ms_class>managedDevices.json</ms_class>
 		<api_version>1.0</api_version>
-		<jsonfile>data/ManagedDevices.json</jsonfile>
+		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>manufacturer</primary_key>
@@ -78,7 +78,7 @@
 
 	<!-- OS families -->
 	<itoposfamilyintunecollector>
-		<jsonfile>data/testManagedDevices.json</jsonfile>
+		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>operatingSystem</primary_key>
@@ -159,7 +159,7 @@
 		<!-- iTop Brands -->
 		<collector>
             <name>iTopBrandInTuneCollector</name>
-            <enable>no</enable>
+            <enable>yes</enable>
             <rank>1</rank>
 		</collector>
 		<!-- iTop Models -->
