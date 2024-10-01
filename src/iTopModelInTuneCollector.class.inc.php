@@ -2,39 +2,6 @@
 
 class iTopModelInTuneCollector extends JsonCollector
 {
-    private $oModelMapping;
-
-    /**
-     * @inheritdoc
-     */
-    protected function MustProcessBeforeSynchro()
-    {
-        return true;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function InitProcessBeforeSynchro(): void
-    {
-        // Create IPConfig mapping table
-        $this->oModelMapping = new LookupTable('SELECT Model', array('brand_id_friendlyname', 'name'));
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function ProcessLineBeforeSynchro(&$aLineData, $iLineIndex): void
-    {
-        // We are just interested here to report the models that don't exist yet in iTop (whatever their type
-        // Usage of type as 3rd attribute is to provide a column where to store the lookup that won't be used afterward
-        if ($this->oModelMapping->Lookup($aLineData, array('brand_id', 'name'), 'type', $iLineIndex)) {
-            if ($iLineIndex != 0) {
-                throw new IgnoredRowException('Model already reported in iTop');
-            }
-        }
-    }
-
     /**
      * @inheritdoc
      */
@@ -42,8 +9,14 @@ class iTopModelInTuneCollector extends JsonCollector
     {
         $aData = parent::Fetch();
         if ($aData !== false) {
-            // Then process each collected status
-            $aData['primary_key'] = $aData['brand_id'].' - '.$aData['name'];
+            $aData['primary_key'] = $aData['brand_id'].'-'.$aData['name'];
+            // Set type according to OSFamily / Model mapping
+            if (array_key_exists('osfamily_type_default_mapping', $this->aCollectorConfig)) {
+                $sType = $aData['type'];
+                if (array_key_exists($sType, $this->aCollectorConfig['osfamily_type_default_mapping'])) {
+                    $aData['type'] = $this->aCollectorConfig['osfamily_type_default_mapping'][$sType];
+                }
+            }
         }
 
         return $aData;

@@ -54,18 +54,26 @@
 
 	<!-- Models -->
 	<itopmodelintunecollector>
-		<jsonfile>data/testManagedDevices.json</jsonfile>
+		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
 			<brand_id>manufacturer</brand_id>
 			<name>model</name>
-			<type>type</type>
+			<type>operatingSystem</type>
 		</fields>
 		<defaults>
 			<primary_key>key</primary_key>
-			<type>TapeLibrary</type>
 		</defaults>
+		<osfamily_type_default_mapping>
+			<Android>MobilePhone</Android>
+			<iOS>MobilePhone</iOS>
+			<iPadOS>Tablet</iPadOS>
+			<Linux>PC</Linux>
+			<macOS>PC</macOS>
+			<Windows>PC</Windows>
+			<Chrome_OS>PC</Chrome_OS>
+		</osfamily_type_default_mapping>
 	</itopmodelintunecollector>
 
 	<!-- OS families -->
