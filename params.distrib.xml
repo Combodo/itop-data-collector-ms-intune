@@ -24,6 +24,34 @@
 		<defaults/>
 	</itopbrandintunecollector>
 
+	<!-- Mobile Phones -->
+	<itopmobilephoneintunecollector>
+		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<contacts_list>emailAddress</contacts_list>
+			<description>notes</description>
+			<imei>imei</imei>
+			<model_id>model</model_id>
+			<name>deviceName</name>
+			<org_id>org_id</org_id>
+			<phonenumber>phoneNumber</phonenumber>
+			<osfamily_id>operatingSystem</osfamily_id>
+			<osversion_id>osVersion</osversion_id>
+			<serialnumber>serialNumber</serialnumber>
+			<status>status</status>
+		</fields>
+		<defaults>
+			<org_id>Demo</org_id>
+			<status>production</status>
+		</defaults>
+		<nullified_attributes type="array">
+			<attribute>description</attribute>
+		</nullified_attributes>
+	</itopmobilephoneintunecollector>
+
 	<!-- Models -->
 	<itopmodelintunecollector>
 		<jsonfile>data/testManagedDevices.json</jsonfile>
@@ -66,6 +94,59 @@
 		</defaults>
 	</itoposversionintunecollector>
 
+	<!-- PCs -->
+	<itoppcintunecollector>
+		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<contacts_list>emailAddress</contacts_list>
+			<description>notes</description>
+			<model_id>model</model_id>
+			<name>deviceName</name>
+			<org_id>org_id</org_id>
+			<osfamily_id>operatingSystem</osfamily_id>
+			<osversion_id>osVersion</osversion_id>
+			<ram>physicalMemoryInBytes</ram>
+			<serialnumber>serialNumber</serialnumber>
+			<status>status</status>
+			<type>type</type>
+		</fields>
+		<defaults>
+			<org_id>Demo</org_id>
+			<status>production</status>
+			<type>laptop</type>
+		</defaults>
+		<nullified_attributes type="array">
+			<attribute>description</attribute>
+		</nullified_attributes>
+	</itoppcintunecollector>
+
+	<!-- Tablets -->
+	<itoptabletintunecollector>
+		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<contacts_list>emailAddress</contacts_list>
+			<description>notes</description>
+			<model_id>model</model_id>
+			<name>deviceName</name>
+			<org_id>org_id</org_id>
+			<serialnumber>serialNumber</serialnumber>
+			<status>status</status>
+		</fields>
+		<defaults>
+			<org_id>Demo</org_id>
+			<status>production</status>
+		</defaults>
+		<nullified_attributes type="array">
+			<attribute>description</attribute>
+		</nullified_attributes>
+	</itoptabletintunecollector>
+
 	<!-- Class collection sequence -->
 	<collectors_launch_sequence type="array">
 		<!-- iTop Brands -->
@@ -92,6 +173,24 @@
 			<enable>yes</enable>
 			<rank>4</rank>
 		</collector>
+		<!-- iTop Mobile Phones -->
+		<collector>
+			<name>iTopMobilePhoneInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>5</rank>
+		</collector>
+		<!-- iTop PCs -->
+		<collector>
+			<name>iTopPCInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>6</rank>
+		</collector>
+		<!-- iTop Tablets -->
+		<collector>
+			<name>iTopTabletInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>7</rank>
+		</collector>
 	</collectors_launch_sequence>
 
 	<!-- Synchronization parameters -->
@@ -104,6 +203,9 @@
 		<itopmodel_synchro_name>$name_prefix$ Models $name_postfix$ - $ms_tenantid_short$</itopmodel_synchro_name>
 		<itoposfamily_synchro_name>$name_prefix$ OS Families $name_postfix$ - $ms_tenantid_short$</itoposfamily_synchro_name>
 		<itoposversion_synchro_name>$name_prefix$ OS Versions $name_postfix$ - $ms_tenantid_short$</itoposversion_synchro_name>
+		<itopmobilephone_synchro_name>$name_prefix$ Mobile Phones $name_postfix$ - $ms_tenantid_short$</itopmobilephone_synchro_name>
+		<itoppc_synchro_name>$name_prefix$ PCs $name_postfix$ - $ms_tenantid_short$</itoppc_synchro_name>
+		<itoptablet_synchro_name>$name_prefix$ Tablets $name_postfix$ - $ms_tenantid_short$</itoptablet_synchro_name>
 		<synchro_status>production</synchro_status>
 		<full_load_interval>0</full_load_interval><!-- 7 days (in seconds): 7*24*60*60 -->
 	</json_placeholders>
