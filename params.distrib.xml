@@ -71,7 +71,20 @@
 			<iPadOS>Tablet</iPadOS>
 			<Linux>PC</Linux>
 			<macOS>PC</macOS>
-			<Windows>PC</Windows>
+			<Windows type="array">
+				<brand>
+					<name>Dell Inc.</name>
+					<type>PC</type>
+				</brand>
+				<brand>
+					<name>LENOVO</name>
+					<type>PC</type>
+				</brand>
+				<brand>
+					<name>Panasonic Connect Co., Ltd.</name>
+					<type>PC</type>
+				</brand>
+			</Windows>
 			<Chrome_OS>PC</Chrome_OS>
 		</osfamily_type_default_mapping>
 	</itopmodelintunecollector>
