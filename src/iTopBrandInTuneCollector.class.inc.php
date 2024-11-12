@@ -3,6 +3,8 @@ require_once(APPROOT.'collectors/msbase/src/MSJsonCollector.class.inc.php');
 
 class iTopBrandInTuneCollector extends MSJsonCollector
 {
+    private $aCollectedBrands = [];
+
     /**
      * @inheritdoc
      */
@@ -22,6 +24,24 @@ class iTopBrandInTuneCollector extends MSJsonCollector
 
 		return $sUrl;
 	}
+
+    /**
+     * @inheritdoc
+     */
+    public function Fetch() {
+        // Exclude duplicate entries, if any
+        $aData = parent::Fetch();
+        while ($aData !== false) {
+            if (($aData['primary_key'] != "") && !in_array($aData, $this->aCollectedBrands)) {
+                $this->aCollectedBrands[] = $aData;
+                break;
+            } else {
+                $this->iIdx++;
+                $aData = parent::Fetch();
+            }
+        }
+        return $aData;
+    }
 
 }
 
