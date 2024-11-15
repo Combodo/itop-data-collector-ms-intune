@@ -34,6 +34,7 @@
 			<contacts_list>emailAddress</contacts_list>
 			<description>notes</description>
 			<imei>imei</imei>
+			<intuneid>id</intuneid>
 			<model_id>model</model_id>
 			<name>deviceName</name>
 			<org_id>org_id</org_id>
@@ -123,6 +124,7 @@
 			<brand_id>manufacturer</brand_id>
 			<contacts_list>emailAddress</contacts_list>
 			<description>notes</description>
+			<intuneid>id</intuneid>
 			<model_id>model</model_id>
 			<name>deviceName</name>
 			<org_id>org_id</org_id>
@@ -152,6 +154,7 @@
 			<brand_id>manufacturer</brand_id>
 			<contacts_list>emailAddress</contacts_list>
 			<description>notes</description>
+			<intuneid>id</intuneid>
 			<model_id>model</model_id>
 			<name>deviceName</name>
 			<org_id>org_id</org_id>
