@@ -213,6 +213,9 @@
 		</collector>
 	</collectors_launch_sequence>
 
+	<!-- Global iTop parameters -->
+	<model_unknown_type>InTuneUnknown</model_unknown_type>
+
 	<!-- Synchronization parameters -->
 	<contact_to_notify></contact_to_notify>
 	<synchro_user></synchro_user>

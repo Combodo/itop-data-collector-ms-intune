@@ -2,7 +2,19 @@
 
 class iTopModelInTuneCollector extends JsonCollector
 {
+    const DEFAULT_MODEL_UNKNOWN_TYPE = 'InTuneUnknown';
     private $aCollectedModels = [];
+    private $sUnknownType;
+
+    /**
+     * @inheritdoc
+     */
+    public function Init(): void
+    {
+        parent::Init();
+
+        $this->sUnknownType = Utils::GetConfigurationValue('model_unknown_type', self::DEFAULT_MODEL_UNKNOWN_TYPE);
+    }
 
     /**
      * @inheritdoc
@@ -17,7 +29,7 @@ class iTopModelInTuneCollector extends JsonCollector
             $aData['primary_key'] = $sBrand.'-'.$aData['name'];
             if (($sBrand != "") && !in_array($aData, $this->aCollectedModels)) {
                 $this->aCollectedModels[] = $aData;
-                $sModelType = 'unknown';
+                $sModelType = $this->sUnknownType;
                 if (array_key_exists('osfamily_type_default_mapping', $this->aCollectorConfig)) {
                     $aDefaultMapping = $this->aCollectorConfig['osfamily_type_default_mapping'];
                     $sOS = $aData['type'];
