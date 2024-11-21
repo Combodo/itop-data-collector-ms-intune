@@ -31,11 +31,11 @@ class iTopPCInTuneCollector extends JsonCollector
     {
         if (!$this->oModelLookup->Lookup($aLineData, array('brand_id', 'model_id'), 'model_id', $iLineIndex))
         {
-            throw New IgnoredRowException('Unknown Model - Brand: '.$aLineData['brand_id'].' , Model: '.$aLineData['model_id']);
+            throw New IgnoredRowException('Unknown Model');
         }
         if (!$this->oOSVersionLookup->Lookup($aLineData, array('osfamily_id', 'osversion_id'), 'osversion_id', $iLineIndex))
         {
-            throw New IgnoredRowException('Unknown OS Version - OS Family: '.$aLineData['osfamily_id'].' , OS Version: '.$aLineData['osversion_id']);
+            throw New IgnoredRowException('Unknown OS Version ');
         }
     }
 

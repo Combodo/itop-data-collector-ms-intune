@@ -21,7 +21,6 @@ class iTopMobilePhoneInTuneCollector extends JsonCollector
     protected function InitProcessBeforeSynchro()
     {
         $this->oModelLookup = new LookupTable('SELECT Model AS m WHERE m.type = \'MobilePhone\'', array('brand_id_friendlyname', 'name'));
-        $this->oOSVersionLookup = new LookupTable('SELECT OSVersion', array('osfamily_id_friendlyname', 'name'));
     }
 
     /**
@@ -32,10 +31,6 @@ class iTopMobilePhoneInTuneCollector extends JsonCollector
         if (!$this->oModelLookup->Lookup($aLineData, array('brand_id', 'model_id'), 'model_id', $iLineIndex))
         {
             throw New IgnoredRowException('Unknown Model');
-        }
-        if (!$this->oOSVersionLookup->Lookup($aLineData, array('osfamily_id', 'osversion_id'), 'osversion_id', $iLineIndex))
-        {
-            throw New IgnoredRowException('Unknown OS Version');
         }
     }
 
