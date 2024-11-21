@@ -13,8 +13,9 @@
 
 	<!-- Brands -->
 	<itopbrandintunecollector>
+		<ms_class>managedDevice</ms_class>
 		<api_version>1.0</api_version>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>manufacturer</primary_key>
@@ -25,7 +26,7 @@
 
 	<!-- Mobile Phones -->
 	<itopmobilephoneintunecollector>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -38,8 +39,6 @@
 			<name>deviceName</name>
 			<org_id>org_id</org_id>
 			<phonenumber>phoneNumber</phonenumber>
-			<osfamily_id>operatingSystem</osfamily_id>
-			<osversion_id>osVersion</osversion_id>
 			<serialnumber>serialNumber</serialnumber>
 			<status>status</status>
 		</fields>
@@ -54,7 +53,7 @@
 
 	<!-- Models -->
 	<itopmodelintunecollector>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
@@ -91,7 +90,7 @@
 
 	<!-- OS families -->
 	<itoposfamilyintunecollector>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>operatingSystem</primary_key>
@@ -102,7 +101,7 @@
 
 	<!-- OS Versions -->
 	<itoposversionintunecollector>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
@@ -116,7 +115,7 @@
 
 	<!-- PCs -->
 	<itoppcintunecollector>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -146,7 +145,7 @@
 
 	<!-- Tablets -->
 	<itoptabletintunecollector>
-		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
+		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -233,6 +232,10 @@
 		<itoptablet_synchro_name>$name_prefix$ Tablets $name_postfix$ - $ms_tenantid_short$</itoptablet_synchro_name>
 		<synchro_status>production</synchro_status>
 		<full_load_interval>0</full_load_interval><!-- 7 days (in seconds): 7*24*60*60 -->
+		<!-- Set the following parameters to 1 if you want to update them, to 0 otherwise -->
+		<update_mobilephone_contacts_list>1</update_mobilephone_contacts_list>
+		<update_pc_contacts_list>1</update_pc_contacts_list>
+		<update_tablet_organization>1</update_tablet_organization>
 	</json_placeholders>
 
 </parameters>
