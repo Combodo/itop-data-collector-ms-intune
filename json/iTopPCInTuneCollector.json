@@ -51,7 +51,7 @@
 		},
 		{
 			"attcode": "contacts_list",
-			"update": "1",
+			"update": "$update_pc_contacts_list$",
 			"reconcile": "0",
 			"update_policy": "master_locked",
 			"row_separator": "|",
