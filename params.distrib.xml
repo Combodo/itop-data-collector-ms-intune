@@ -13,7 +13,6 @@
 
 	<!-- Brands -->
 	<itopbrandintunecollector>
-		<ms_class>managedDevices.json</ms_class>
 		<api_version>1.0</api_version>
 		<jsonfile>data/inTuneManagedDevices.json</jsonfile>
 		<path>value</path>
@@ -235,13 +234,5 @@
 		<synchro_status>production</synchro_status>
 		<full_load_interval>0</full_load_interval><!-- 7 days (in seconds): 7*24*60*60 -->
 	</json_placeholders>
-
-	<!-- mapping tables -->
-	<user_language_mapping type="array">
-		<pattern>//EN US</pattern>
-		<pattern>/en/EN US</pattern>
-		<pattern>/en-US/EN US</pattern>
-		<pattern>/.*/EN US</pattern>
-	</user_language_mapping>
 
 </parameters>
