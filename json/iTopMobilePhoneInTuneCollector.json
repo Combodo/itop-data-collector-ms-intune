@@ -1,7 +1,7 @@
 {
     "name": "$itopmobilephone_synchro_name$",
     "description": "Synchronization of iTop Mobile Phones from MS InTune",
-    "status": "implementation",
+    "status": "$synchro_status$",
     "user_id": "$synchro_user$",
     "notify_contact_id": "$contact_to_notify$",
     "scope_class": "MobilePhone",
