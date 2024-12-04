@@ -1,9 +1,9 @@
 <?php
+require_once(APPROOT.'collectors/src/InTuneCollector.class.inc.php');
 
-class iTopMobilePhoneInTuneCollector extends JsonCollector
+class iTopMobilePhoneInTuneCollector extends InTuneCollector
 {
     private $oModelLookup;
-    private $oOSVersionLookup;
 
     /**
      * @inheritdoc

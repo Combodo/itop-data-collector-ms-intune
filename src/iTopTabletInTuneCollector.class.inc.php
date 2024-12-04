@@ -1,6 +1,7 @@
 <?php
+require_once(APPROOT.'collectors/src/InTuneCollector.class.inc.php');
 
-class iTopTabletInTuneCollector extends JsonCollector
+class iTopTabletInTuneCollector extends InTuneCollector
 {
     private $oModelLookup;
 

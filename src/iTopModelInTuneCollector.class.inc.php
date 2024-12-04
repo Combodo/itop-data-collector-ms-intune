@@ -1,6 +1,7 @@
 <?php
+require_once(APPROOT.'collectors/src/InTuneCollector.class.inc.php');
 
-class iTopModelInTuneCollector extends JsonCollector
+class iTopModelInTuneCollector extends InTuneCollector
 {
     const DEFAULT_MODEL_UNKNOWN_TYPE = 'InTuneUnknown';
     private $aCollectedModels = [];
@@ -14,6 +15,21 @@ class iTopModelInTuneCollector extends JsonCollector
         parent::Init();
 
         $this->sUnknownType = Utils::GetConfigurationValue('model_unknown_type', self::DEFAULT_MODEL_UNKNOWN_TYPE);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function CheckToLaunch(array $aOrchestratedCollectors): bool
+    {
+        // Check if InTune Datamodel extension is installed
+        if ($this->oCollectionPlan->IsCbdinTuneDMInstalled()) {
+            return true;
+        } else {
+            Utils::Log(LOG_INFO, '> '.get_class($this).' will not be launched as InTune Datamodel extension is not installed on iTop !');
+        }
+
+        return false;
     }
 
     /**
