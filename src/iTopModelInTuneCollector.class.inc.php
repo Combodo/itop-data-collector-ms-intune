@@ -23,13 +23,41 @@ class iTopModelInTuneCollector extends InTuneCollector
     public function CheckToLaunch(array $aOrchestratedCollectors): bool
     {
         // Check if InTune Datamodel extension is installed
-        if ($this->oCollectionPlan->IsCbdinTuneDMInstalled()) {
-            return true;
-        } else {
-            Utils::Log(LOG_INFO, '> '.get_class($this).' will not be launched as InTune Datamodel extension is not installed on iTop !');
+        if (!$this->oCollectionPlan->IsCbdinTuneDMInstalled()) {
+            Utils::Log(LOG_INFO, '> '.get_class($this).' will run in downgraded mode as InTune Datamodel extension is not installed on iTop !');
         }
 
-        return false;
+        return true;
+    }
+
+    /**
+     * Get the model type according to configuration parameters
+     *
+     * @param $sBrand
+     * @param $sOS
+     * @return string
+     */
+    private function GetType($sBrand, $sOS): string
+    {
+        $sModelType = $this->sUnknownType;
+        if (array_key_exists('osfamily_type_default_mapping', $this->aCollectorConfig)) {
+            $aDefaultMapping = $this->aCollectorConfig['osfamily_type_default_mapping'];
+            if (array_key_exists($sOS, $aDefaultMapping)) {
+                if (is_array($aDefaultMapping[$sOS])) {
+                    foreach ($aDefaultMapping[$sOS] as $index => $aBrand) {
+                        if (array_key_exists('name', $aBrand) && ($aBrand['name'] == $sBrand)) {
+                            if (array_key_exists('type', $aBrand)) {
+                                $sModelType = $aBrand['type'];
+                            }
+                            break;
+                        }
+                    }
+                } else {
+                    $sModelType = $aDefaultMapping[$sOS];
+                }
+            }
+        }
+        return $sModelType;
     }
 
     /**
@@ -45,29 +73,14 @@ class iTopModelInTuneCollector extends InTuneCollector
             $aData['primary_key'] = $sBrand.'-'.$aData['name'];
             if (($sBrand != "") && !in_array($aData, $this->aCollectedModels)) {
                 $this->aCollectedModels[] = $aData;
-                $sModelType = $this->sUnknownType;
-                if (array_key_exists('osfamily_type_default_mapping', $this->aCollectorConfig)) {
-                    $aDefaultMapping = $this->aCollectorConfig['osfamily_type_default_mapping'];
-                    $sOS = $aData['type'];
-                    if (array_key_exists($sOS, $aDefaultMapping)) {
-                        if (is_array($aDefaultMapping[$sOS])) {
-                            foreach ($aDefaultMapping[$sOS] AS $index => $aBrand) {
-                                if ($aBrand['name'] == $sBrand) {
-                                    $sModelType = $aBrand['type'];
-                                    break;
-                                }
-                            }
-                        } else {
-                            $sModelType = $aDefaultMapping[$sOS];
-                        }
-                    }
+                $sModelType = $this->GetType($sBrand, $aData['type']);
+                if (($sModelType != $this->sUnknownType) || $this->oCollectionPlan->IsCbdinTuneDMInstalled()) {
+                    $aData['type'] = $sModelType;
+                    break;
                 }
-                $aData['type'] = $sModelType;
-                break;
-            } else {
-                $this->iIdx++;
-                $aData = parent::Fetch();
             }
+            $this->iIdx++;
+            $aData = parent::Fetch();
         }
         return $aData;
 
