@@ -172,9 +172,9 @@
 	<collectors_launch_sequence type="array">
 		<!-- iTop Brands -->
 		<collector>
-            <name>iTopBrandInTuneCollector</name>
-            <enable>yes</enable>
-            <rank>1</rank>
+			<name>iTopBrandInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>1</rank>
 		</collector>
 		<!-- iTop Models -->
 		<collector>
