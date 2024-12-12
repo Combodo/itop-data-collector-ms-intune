@@ -2,12 +2,13 @@
 
 class iTopOSFamilyInTuneCollector extends JsonCollector
 {
-    private $aCollectedOSFamilies = [];
+    private array $aCollectedOSFamilies = [];
 
     /**
      * @inheritdoc
      */
-    public function Fetch() {
+    public function Fetch(): array | false
+    {
         // Exclude duplicate entries, if any
         $aData = parent::Fetch();
         while ($aData !== false) {

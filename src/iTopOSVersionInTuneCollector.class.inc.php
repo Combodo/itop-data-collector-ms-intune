@@ -2,7 +2,7 @@
 
 class iTopOSVersionInTuneCollector extends JsonCollector
 {
-    private $aCollectedOSVersions = [];
+    private array $aCollectedOSVersions = [];
 
     /**
      * @inheritdoc

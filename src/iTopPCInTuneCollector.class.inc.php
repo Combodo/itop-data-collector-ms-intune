@@ -9,7 +9,7 @@ class iTopPCInTuneCollector extends InTuneCollector
     /**
      * @inheritdoc
      */
-    protected function MustProcessBeforeSynchro()
+    protected function MustProcessBeforeSynchro(): bool
     {
         // We must reprocess the CSV data obtained from the inventory script
         // to lookup the Brand/Model and OSFamily/OSVersion in iTop
@@ -19,7 +19,7 @@ class iTopPCInTuneCollector extends InTuneCollector
     /**
      * @inheritdoc
      */
-    protected function InitProcessBeforeSynchro()
+    protected function InitProcessBeforeSynchro(): void
     {
         $this->oModelLookup = new LookupTable('SELECT Model AS m WHERE m.type = \'PC\'', array('brand_id_friendlyname', 'name'));
         $this->oOSVersionLookup = new LookupTable('SELECT OSVersion', array('osfamily_id_friendlyname', 'name'));
@@ -28,7 +28,7 @@ class iTopPCInTuneCollector extends InTuneCollector
     /**
      * @inheritdoc
      */
-    protected function ProcessLineBeforeSynchro(&$aLineData, $iLineIndex)
+    protected function ProcessLineBeforeSynchro(&$aLineData, $iLineIndex): void
     {
         if (!$this->oModelLookup->Lookup($aLineData, array('brand_id', 'model_id'), 'model_id', $iLineIndex))
         {

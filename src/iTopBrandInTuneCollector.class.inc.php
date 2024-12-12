@@ -3,12 +3,12 @@ require_once(APPROOT.'collectors/msbase/src/MSJsonCollector.class.inc.php');
 
 class iTopBrandInTuneCollector extends MSJsonCollector
 {
-    private $aCollectedBrands = [];
+    private array $aCollectedBrands = [];
 
     /**
      * @inheritdoc
      */
-    public function AttributeIsOptional($sAttCode)
+    public function AttributeIsOptional($sAttCode): bool
     {
         if ($sAttCode == 'azuretags') return true;
 

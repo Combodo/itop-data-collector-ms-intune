@@ -8,7 +8,7 @@ class iTopMobilePhoneInTuneCollector extends InTuneCollector
     /**
      * @inheritdoc
      */
-    protected function MustProcessBeforeSynchro()
+    protected function MustProcessBeforeSynchro(): bool
     {
         // We must reprocess the CSV data obtained from the inventory script
         // to lookup the Brand/Model and OSFamily/OSVersion in iTop
@@ -18,7 +18,7 @@ class iTopMobilePhoneInTuneCollector extends InTuneCollector
     /**
      * @inheritdoc
      */
-    protected function InitProcessBeforeSynchro()
+    protected function InitProcessBeforeSynchro(): void
     {
         $this->oModelLookup = new LookupTable('SELECT Model AS m WHERE m.type = \'MobilePhone\'', array('brand_id_friendlyname', 'name'));
     }
@@ -26,7 +26,7 @@ class iTopMobilePhoneInTuneCollector extends InTuneCollector
     /**
      * @inheritdoc
      */
-    protected function ProcessLineBeforeSynchro(&$aLineData, $iLineIndex)
+    protected function ProcessLineBeforeSynchro(&$aLineData, $iLineIndex): void
     {
         if (!$this->oModelLookup->Lookup($aLineData, array('brand_id', 'model_id'), 'model_id', $iLineIndex))
         {
