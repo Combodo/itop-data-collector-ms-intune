@@ -3,10 +3,8 @@
 namespace UnitTestFiles\Test;
 
 use iTopModelInTuneCollector;
-use PHPUnit\Framework\TestCase;
 
-@define('APPROOT', dirname(__FILE__, 4).'/');
-
+require_once (__DIR__.'/AbstractCollectorTestCase.php');
 require_once(APPROOT.'/core/parameters.class.inc.php');
 require_once(APPROOT.'/core/utils.class.inc.php');
 require_once(APPROOT.'/core/collector.class.inc.php');
@@ -16,7 +14,7 @@ require_once(APPROOT.'/collectors/src/iTopModelInTuneCollector.class.inc.php');
 require_once(APPROOT.'/core/collectionplan.class.inc.php');
 require_once(APPROOT.'/collectors/src/InTuneCollectionPlan.class.inc.php');
 
-class iTopModelInTuneCollectorTest extends TestCase
+class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
 {
     function testToto() {
         $oiTopModelInTuneCollector = new iTopModelInTuneCollector;
