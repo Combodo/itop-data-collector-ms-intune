@@ -29,13 +29,13 @@ function SearchFile(string $sDir, string $sModuleFileToFind) : ?string {
 }
 
 if (! defined('APPROOT')){
-	$sLdapModuleFileName = 'module.itop-data-collector-ms-intune.php';
+	$sInTuneModuleFileName = 'module.itop-data-collector-ms-intune.php';
 	$sItopApprootFileName = 'approot.inc.php';
 
 	$sDir = dirname(__DIR__);
 	$siTopDir=null;
 	while(is_readable($sDir) && $sDir != '/') {
-		$sPath = $sDir.DIRECTORY_SEPARATOR.$sLdapModuleFileName;
+		$sPath = $sDir.DIRECTORY_SEPARATOR.$sInTuneModuleFileName;
 		echo "check file $sPath" . PHP_EOL;
 		if (file_exists($sPath)) {
 			define('APPROOT', dirname($sPath, 2) . DIRECTORY_SEPARATOR);
@@ -65,7 +65,7 @@ if (! defined('APPROOT')){
 
 			echo "check file (iTop dir) in $sSubDir" . PHP_EOL;
 
-			$sPath = SearchFile($sSubDir, $sLdapModuleFileName);
+			$sPath = SearchFile($sSubDir, $sInTuneModuleFileName);
 			if (! is_null($sPath)) {
 				define('APPROOT', dirname($sPath, 2) . DIRECTORY_SEPARATOR);
 				break;
@@ -73,13 +73,16 @@ if (! defined('APPROOT')){
 	}
 
 		if (! defined('APPROOT')) {
-			throw new \Exception("cannot find $sLdapModuleFileName in iTop dir $sDir");
+			throw new \Exception("cannot find $sInTuneModuleFileName in iTop dir $sDir");
 		}
 	}
 }
 
 abstract class AbstractCollectorTestCase extends TestCase
 {
+    protected $sDataPath = APPROOT."/data/";
+    protected $oMockedLogger;
+
 	public function setUp(): void
 	{
 		parent::setUp();
