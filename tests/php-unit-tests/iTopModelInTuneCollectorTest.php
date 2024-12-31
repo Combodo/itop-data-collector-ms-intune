@@ -2,6 +2,7 @@
 
 namespace UnitTestFiles\Test;
 
+use InTuneCollectionPlan;
 use iTopModelInTuneCollector;
 use utils;
 
@@ -23,8 +24,11 @@ class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
 
     public function setUp(): void
     {
-        parent::Setup();
+        // Initialize collection plan
+        $oCollectionPlan = new InTuneCollectionPlan();
+        $oCollectionPlan->MockInit();
 
+        parent::Setup();
         $this->oiTopModelInTuneCollector = new iTopModelInTuneCollector;
         $this->oiTopModelInTuneCollector->Init();
 
@@ -36,8 +40,39 @@ class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
     }
 
     function testGetTypeWithUnknownOS() {
-        $sType = $this->InvokeNonPublicMethod('iTopModelInTuneCollector', 'GetType', $this->oiTopModelInTuneCollector, ['MyOwnOS', '']);
+        $sType = $this->InvokeNonPublicMethod('iTopModelInTuneCollector', 'GetType', $this->oiTopModelInTuneCollector, ['', 'MyOwnOS']);
         $this->assertTrue($sType == $this->sUnknownType);
+    }
+
+    function testGetTypeWithUnknownBrand() {
+        $sType = $this->InvokeNonPublicMethod('iTopModelInTuneCollector', 'GetType', $this->oiTopModelInTuneCollector, ['MyOwnBrand', 'Windows']);
+        $this->assertTrue($sType == $this->sUnknownType);
+    }
+
+    function testGetTypeWithKnownOS() {
+        $sType = $this->InvokeNonPublicMethod('iTopModelInTuneCollector', 'GetType', $this->oiTopModelInTuneCollector, ['', 'Android']);
+        $this->assertTrue($sType == 'MobilePhone');
+    }
+
+    function testGetTypeWithKnownBrand() {
+        $sType = $this->InvokeNonPublicMethod('iTopModelInTuneCollector', 'GetType', $this->oiTopModelInTuneCollector, ['Dell Inc.', 'Windows']);
+        $this->assertTrue($sType == 'PC');
+    }
+
+    function testCollectFromForgedJson() {
+        // Copy forged json to data directory
+        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/InTuneManagedDevices.json";
+        $bRes = copy($sJsonFile, $this->sDataPath.basename($sJsonFile));
+        if (!$bRes) {
+            throw new \Exception("Failed copying $sJsonFile to ".$this->sDataPath.basename($sJsonFile));
+        }
+
+        // Run collect
+        $this->assertTrue($this->oiTopModelInTuneCollector->Collect());
+
+        // Compare output csv
+        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/expected_model.csv");
+        $this->assertEquals($sExpected_content, file_get_contents(APPROOT."/data/iTopModelInTuneCollector-1.csv"));
     }
 
 }
