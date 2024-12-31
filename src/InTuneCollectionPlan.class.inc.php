@@ -21,6 +21,11 @@ class InTuneCollectionPlan extends MSCollectionPlan
         }
     }
 
+    public function MockInit($bInTuneDatamodelIsInstalled = true): void
+    {
+        $this->bInTuneDatamodelIsInstalled = $bInTuneDatamodelIsInstalled;
+    }
+
     /**
      * Check if Combodo InTune Datamodel is installed
      *
