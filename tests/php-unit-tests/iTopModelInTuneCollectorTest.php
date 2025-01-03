@@ -61,7 +61,7 @@ class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
 
     function testCollectFromForgedJson() {
         // Copy forged json to data directory
-        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/InTuneManagedDevices.json";
+        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/data/InTuneManagedDevices.json";
         $bRes = copy($sJsonFile, $this->sDataPath.basename($sJsonFile));
         if (!$bRes) {
             throw new \Exception("Failed copying $sJsonFile to ".$this->sDataPath.basename($sJsonFile));
@@ -71,7 +71,7 @@ class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopModelInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/expected_model.csv");
+        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_model.csv");
         $this->assertEquals($sExpected_content, file_get_contents(APPROOT."/data/iTopModelInTuneCollector-1.csv"));
     }
 

@@ -32,7 +32,7 @@ class iTopOSFamilyInTuneCollectorTest extends AbstractCollectorTestCase
 
     function testCollectFromForgedJson() {
         // Copy forged json to data directory
-        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/InTuneManagedDevices.json";
+        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/data/InTuneManagedDevices.json";
         $bRes = copy($sJsonFile, $this->sDataPath.basename($sJsonFile));
         if (!$bRes) {
             throw new \Exception("Failed copying $sJsonFile to ".$this->sDataPath.basename($sJsonFile));
@@ -42,7 +42,7 @@ class iTopOSFamilyInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopOSFamilyInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/expected_osfamily.csv");
+        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_osfamily.csv");
         $this->assertEquals($sExpected_content, file_get_contents(APPROOT."/data/iTopOSFamilyInTuneCollector-1.csv"));
     }
 

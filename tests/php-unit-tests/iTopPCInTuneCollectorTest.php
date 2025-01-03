@@ -33,7 +33,7 @@ class iTopPCInTuneCollectorTest extends AbstractCollectorTestCase
 
     function testCollectFromForgedJson() {
         // Copy forged json to data directory
-        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/InTuneManagedDevices.json";
+        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/data/InTuneManagedDevices.json";
         $bRes = copy($sJsonFile, $this->sDataPath.basename($sJsonFile));
         if (!$bRes) {
             throw new \Exception("Failed copying $sJsonFile to ".$this->sDataPath.basename($sJsonFile));
@@ -43,7 +43,7 @@ class iTopPCInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopPCInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/expected_pc.raw.csv");
+        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_pc.raw.csv");
         $this->assertEquals($sExpected_content, file_get_contents(APPROOT."/data/iTopPCInTuneCollector.raw-1.csv"));
     }
 
