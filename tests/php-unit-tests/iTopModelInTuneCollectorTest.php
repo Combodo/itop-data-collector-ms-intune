@@ -35,6 +35,13 @@ class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
         $this->sUnknownType = Utils::GetConfigurationValue('model_unknown_type', self::WRONG_MODEL_UNKNOWN_TYPE);
     }
 
+    public function tearDown(): void
+    {
+        parent::tearDown();
+        unlink($this->sDataPath."InTuneManagedDevices.json");
+        unlink($this->sDataPath."iTopModelInTuneCollector-1.csv");
+    }
+
     function testIsModelUnknownTypeSet() {
         $this->assertFalse($this->sUnknownType == self::WRONG_MODEL_UNKNOWN_TYPE);
     }

@@ -30,6 +30,13 @@ class iTopOSFamilyInTuneCollectorTest extends AbstractCollectorTestCase
         $this->oiTopOSFamilyInTuneCollector->Init();
     }
 
+    public function tearDown(): void
+    {
+        parent::tearDown();
+        unlink($this->sDataPath."InTuneManagedDevices.json");
+        unlink($this->sDataPath."iTopOSFamilyInTuneCollector-1.csv");
+    }
+
     function testCollectFromForgedJson() {
         // Copy forged json to data directory
         $sJsonFile = APPROOT."collectors/tests/php-unit-tests/data/InTuneManagedDevices.json";

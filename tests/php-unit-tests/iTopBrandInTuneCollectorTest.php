@@ -31,6 +31,13 @@ class iTopBrandInTuneCollectorTest extends AbstractCollectorTestCase
         $this->oiTopBrandInTuneCollector->SetTestMode(true);
     }
 
+    public function tearDown(): void
+    {
+        parent::tearDown();
+        unlink($this->sDataPath."InTuneManagedDevices.json");
+        unlink($this->sDataPath."iTopBrandInTuneCollector-1.csv");
+    }
+
     function testCollectFromForgedJson() {
         // Copy forged json to data directory
         $sJsonFile = APPROOT."collectors/tests/php-unit-tests/data/InTuneManagedDevices.json";
