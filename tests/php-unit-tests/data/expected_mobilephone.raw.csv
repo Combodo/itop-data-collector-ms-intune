@@ -1,0 +1,5 @@
+primary_key;brand_id;contacts_list;imei;intuneid;model_id;name;org_id;phonenumber;serialnumber;status;description
+9ce6e3f1-a288-4991-b989-24451e39dcaa;samsung;contact_id->email:claude.monet@demo.com;355884581582708;9ce6e3f1-a288-4991-b989-24451e39dcaa;SM-A235F;Device1;Demo;;BZ8TA0WLZAA;production;<NULL>
+c6184b46-a1af-4104-8a56-240a424272d5;LENOVO;contact_id->email:rene.descartes@demo.com;;c6184b46-a1af-4104-8a56-240a424272d5;10SUS0HK0E;Device2;Demo;;F4MF0629;production;<NULL>
+533dedeb-48e0-441b-b94b-23f4119f0f63;Apple;contact_id->email:frida.kahlo@demo.com;444538320557074;533dedeb-48e0-441b-b94b-23f4119f0f63;"iPhone 13 Pro Max";Device3;Demo;;;production;<NULL>
+533dedeb-48e0-441b-b94b-23f4119f0fab;LENOVO;contact_id->email:pablo.picasso@demo.com;;533dedeb-48e0-441b-b94b-23f4119f0fab;10SUS0HK0E;Device4;Demo;;F4MF0630;production;<NULL>

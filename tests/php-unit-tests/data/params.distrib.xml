@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Default values for parameters. Do NOT alter this file, use params.local.xml instead -->
+<parameters>
+	<!-- Microsoft links -->
+	<microsoft_login_url>https://login.microsoftonline.com/</microsoft_login_url>
+	<microsoft_auth_mode>/oauth2/token</microsoft_auth_mode>
+	<microsoft_resource>https://graph.microsoft.com</microsoft_resource>
+
+	<!-- Client's credentials -->
+	<ms_clientid></ms_clientid>
+	<ms_clientsecret></ms_clientsecret>
+	<ms_tenantid></ms_tenantid>
+	<ms_tenantid_short></ms_tenantid_short>
+
+	<!-- Brands -->
+	<itopbrandintunecollector>
+		<ms_class>managedDevice</ms_class>
+		<api_version>1.0</api_version>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>manufacturer</primary_key>
+			<name>manufacturer</name>
+		</fields>
+		<defaults/>
+	</itopbrandintunecollector>
+
+	<!-- Mobile Phones -->
+	<itopmobilephoneintunecollector>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<contacts_list>emailAddress</contacts_list>
+			<description>notes</description>
+			<imei>imei</imei>
+			<intuneid>id</intuneid>
+			<model_id>model</model_id>
+			<name>deviceName</name>
+			<org_id>org_id</org_id>
+			<phonenumber>phoneNumber</phonenumber>
+			<serialnumber>serialNumber</serialnumber>
+			<status>status</status>
+		</fields>
+		<defaults>
+			<org_id>Demo</org_id>
+			<status>production</status>
+		</defaults>
+		<nullified_attributes type="array">
+			<attribute>description</attribute>
+		</nullified_attributes>
+	</itopmobilephoneintunecollector>
+
+	<!-- Models -->
+	<itopmodelintunecollector>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>primary_key</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<name>model</name>
+			<type>operatingSystem</type>
+		</fields>
+		<defaults>
+			<primary_key>key</primary_key>
+		</defaults>
+		<osfamily_type_default_mapping>
+			<Android>MobilePhone</Android>
+			<iOS>MobilePhone</iOS>
+			<iPadOS>Tablet</iPadOS>
+			<Linux>PC</Linux>
+			<macOS>PC</macOS>
+			<Windows type="array">
+				<brand>
+					<name>Dell Inc.</name>
+					<type>PC</type>
+				</brand>
+				<brand>
+					<name>LENOVO</name>
+					<type>PC</type>
+				</brand>
+				<brand>
+					<name>Panasonic Connect Co., Ltd.</name>
+					<type>PC</type>
+				</brand>
+			</Windows>
+			<Chrome_OS>PC</Chrome_OS>
+		</osfamily_type_default_mapping>
+	</itopmodelintunecollector>
+
+	<!-- OS families -->
+	<itoposfamilyintunecollector>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>operatingSystem</primary_key>
+			<name>operatingSystem</name>
+		</fields>
+		<defaults/>
+	</itoposfamilyintunecollector>
+
+	<!-- OS Versions -->
+	<itoposversionintunecollector>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>primary_key</primary_key>
+			<osfamily_id>operatingSystem</osfamily_id>
+			<name>osVersion</name>
+		</fields>
+		<defaults>
+			<primary_key>key</primary_key>
+		</defaults>
+	</itoposversionintunecollector>
+
+	<!-- PCs -->
+	<itoppcintunecollector>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<contacts_list>emailAddress</contacts_list>
+			<description>notes</description>
+			<intuneid>id</intuneid>
+			<model_id>model</model_id>
+			<name>deviceName</name>
+			<org_id>org_id</org_id>
+			<osfamily_id>operatingSystem</osfamily_id>
+			<osversion_id>osVersion</osversion_id>
+			<ram>physicalMemoryInBytes</ram>
+			<serialnumber>serialNumber</serialnumber>
+			<status>status</status>
+			<type>type</type>
+		</fields>
+		<defaults>
+			<org_id>Demo</org_id>
+			<status>production</status>
+			<type>laptop</type>
+		</defaults>
+		<nullified_attributes type="array">
+			<attribute>description</attribute>
+		</nullified_attributes>
+	</itoppcintunecollector>
+
+	<!-- Tablets -->
+	<itoptabletintunecollector>
+		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<path>value</path>
+		<fields>
+			<primary_key>id</primary_key>
+			<brand_id>manufacturer</brand_id>
+			<contacts_list>emailAddress</contacts_list>
+			<description>notes</description>
+			<intuneid>id</intuneid>
+			<model_id>model</model_id>
+			<name>deviceName</name>
+			<org_id>org_id</org_id>
+			<serialnumber>serialNumber</serialnumber>
+			<status>status</status>
+		</fields>
+		<defaults>
+			<org_id>Demo</org_id>
+			<status>production</status>
+		</defaults>
+		<nullified_attributes type="array">
+			<attribute>description</attribute>
+		</nullified_attributes>
+	</itoptabletintunecollector>
+
+	<!-- Class collection sequence -->
+	<collectors_launch_sequence type="array">
+		<!-- iTop Brands -->
+		<collector>
+			<name>iTopBrandInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>1</rank>
+		</collector>
+		<!-- iTop Models -->
+		<collector>
+			<name>iTopModelInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>2</rank>
+		</collector>
+		<!-- iTop OS Families -->
+		<collector>
+			<name>iTopOSFamilyInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>3</rank>
+		</collector>
+		<!-- iTop OS Versions -->
+		<collector>
+			<name>iTopOSVersionInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>4</rank>
+		</collector>
+		<!-- iTop Mobile Phones -->
+		<collector>
+			<name>iTopMobilePhoneInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>5</rank>
+		</collector>
+		<!-- iTop PCs -->
+		<collector>
+			<name>iTopPCInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>6</rank>
+		</collector>
+		<!-- iTop Tablets -->
+		<collector>
+			<name>iTopTabletInTuneCollector</name>
+			<enable>yes</enable>
+			<rank>7</rank>
+		</collector>
+	</collectors_launch_sequence>
+
+	<!-- Global iTop parameters -->
+	<model_unknown_type>InTuneUnknown</model_unknown_type>
+
+	<!-- Synchronization parameters -->
+	<contact_to_notify></contact_to_notify>
+	<synchro_user></synchro_user>
+	<name_prefix>InTune</name_prefix>
+	<name_postfix>Discovery</name_postfix>
+	<json_placeholders>
+		<itopbrand_synchro_name>$name_prefix$ Brands $name_postfix$ - $ms_tenantid_short$</itopbrand_synchro_name>
+		<itopmodel_synchro_name>$name_prefix$ Models $name_postfix$ - $ms_tenantid_short$</itopmodel_synchro_name>
+		<itoposfamily_synchro_name>$name_prefix$ OS Families $name_postfix$ - $ms_tenantid_short$</itoposfamily_synchro_name>
+		<itoposversion_synchro_name>$name_prefix$ OS Versions $name_postfix$ - $ms_tenantid_short$</itoposversion_synchro_name>
+		<itopmobilephone_synchro_name>$name_prefix$ Mobile Phones $name_postfix$ - $ms_tenantid_short$</itopmobilephone_synchro_name>
+		<itoppc_synchro_name>$name_prefix$ PCs $name_postfix$ - $ms_tenantid_short$</itoppc_synchro_name>
+		<itoptablet_synchro_name>$name_prefix$ Tablets $name_postfix$ - $ms_tenantid_short$</itoptablet_synchro_name>
+		<synchro_status>production</synchro_status>
+		<full_load_interval>0</full_load_interval><!-- 7 days (in seconds): 7*24*60*60 -->
+		<!-- Set the following parameters to 1 if you want to update them, to 0 otherwise -->
+		<update_mobilephone_contacts_list>1</update_mobilephone_contacts_list>
+		<update_pc_contacts_list>1</update_pc_contacts_list>
+		<update_tablet_organization>1</update_tablet_organization>
+	</json_placeholders>
+
+</parameters>
