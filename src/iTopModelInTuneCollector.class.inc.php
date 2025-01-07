@@ -3,7 +3,8 @@ require_once(APPROOT.'collectors/src/InTuneCollector.class.inc.php');
 
 class iTopModelInTuneCollector extends InTuneCollector
 {
-    const string DEFAULT_MODEL_UNKNOWN_TYPE = 'InTuneUnknown';
+//    const string DEFAULT_MODEL_UNKNOWN_TYPE = 'InTuneUnknown';    // PHP 8.3+ only
+    const DEFAULT_MODEL_UNKNOWN_TYPE = 'InTuneUnknown';
     private array $aCollectedModels = [];
     private string $sUnknownType;
 
