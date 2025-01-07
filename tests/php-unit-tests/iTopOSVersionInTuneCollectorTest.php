@@ -33,7 +33,11 @@ class iTopOSVersionInTuneCollectorTest extends AbstractCollectorTestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        unlink($this->sDataPath."iTopOSVersionInTuneCollector-1.csv");
+
+        $sFile = $this->sDataPath."iTopOSVersionInTuneCollector-1.csv";
+        if (file_exists($sFile)) {
+            unlink($sFile);
+        }
     }
 
     function testCollectFromForgedJson() {

@@ -34,7 +34,11 @@ class iTopMobilePhoneInTuneCollectorTest extends AbstractCollectorTestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        unlink($this->sDataPath."iTopMobilePhoneInTuneCollector.raw-1.csv");
+
+        $sFile = $this->sDataPath."iTopMobilePhoneInTuneCollector.raw-1.csv";
+        if (file_exists($sFile)) {
+            unlink($sFile);
+        }
     }
 
     function testCollectFromForgedJson() {

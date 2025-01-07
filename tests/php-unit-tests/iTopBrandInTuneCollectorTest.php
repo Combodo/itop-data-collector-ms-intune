@@ -34,7 +34,11 @@ class iTopBrandInTuneCollectorTest extends AbstractCollectorTestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        unlink($this->sDataPath."iTopBrandInTuneCollector-1.csv");
+
+        $sFile = $this->sDataPath."iTopBrandInTuneCollector-1.csv";
+        if (file_exists($sFile)) {
+            unlink($sFile);
+        }
     }
 
     function testCollectFromForgedJson() {
