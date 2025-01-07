@@ -86,6 +86,13 @@ abstract class AbstractCollectorTestCase extends TestCase
 	public function setUp(): void
 	{
 		parent::setUp();
+
+        // Copy forged config file to collectors/ directory
+        $sConfFile = APPROOT."collectors/tests/php-unit-tests/data/params.distrib.xml";
+        $bRes = copy($sConfFile, APPROOT."/collectors/params.distrib.xml");
+        if (!$bRes) {
+            throw new \Exception("Failed copying $sConfFile to collectors/params.distrib.xml");
+        }
 	}
 
 	public function tearDown(): void

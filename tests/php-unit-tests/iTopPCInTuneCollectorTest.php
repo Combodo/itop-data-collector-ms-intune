@@ -34,18 +34,10 @@ class iTopPCInTuneCollectorTest extends AbstractCollectorTestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        unlink($this->sDataPath."InTuneManagedDevices.json");
         unlink($this->sDataPath."iTopPCInTuneCollector.raw-1.csv");
     }
 
     function testCollectFromForgedJson() {
-        // Copy forged json to data directory
-        $sJsonFile = APPROOT."collectors/tests/php-unit-tests/data/InTuneManagedDevices.json";
-        $bRes = copy($sJsonFile, $this->sDataPath.basename($sJsonFile));
-        if (!$bRes) {
-            throw new \Exception("Failed copying $sJsonFile to ".$this->sDataPath.basename($sJsonFile));
-        }
-
         // Run collect
         $this->assertTrue($this->oiTopPCInTuneCollector->Collect());
 
