@@ -15,7 +15,7 @@
 	<itopbrandintunecollector>
 		<ms_class>managedDevice</ms_class>
 		<api_version>1.0</api_version>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>manufacturer</primary_key>
@@ -26,7 +26,7 @@
 
 	<!-- Mobile Phones -->
 	<itopmobilephoneintunecollector>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -53,7 +53,7 @@
 
 	<!-- Models -->
 	<itopmodelintunecollector>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
@@ -90,7 +90,7 @@
 
 	<!-- OS families -->
 	<itoposfamilyintunecollector>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>operatingSystem</primary_key>
@@ -101,7 +101,7 @@
 
 	<!-- OS Versions -->
 	<itoposversionintunecollector>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
@@ -115,7 +115,7 @@
 
 	<!-- PCs -->
 	<itoppcintunecollector>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -145,7 +145,7 @@
 
 	<!-- Tablets -->
 	<itoptabletintunecollector>
-		<jsonfile>collectors/tests/php-unit-tests/data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>InTuneManagedDevices.json</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
