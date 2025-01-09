@@ -89,8 +89,9 @@ abstract class AbstractCollectorTestCase extends TestCase
 
         // Copy forged config file to collectors/ directory
         $sConfFile = __DIR__ . "/data/params.distrib.xml";
-        $bRes = copy($sConfFile, APPROOT."/collectors/params.distrib.xml");
-        if (!$bRes) {
+		$sContent = file_get_contents($sConfFile);
+		$sModifiedContent = str_replace('InTuneManagedDevices.json', __DIR__ . '/data/InTuneManagedDevices.json', $sContent);
+		if (! file_put_contents(APPROOT."/collectors/params.distrib.xml", $sModifiedContent)) {
             throw new \Exception("Failed copying $sConfFile to collectors/params.distrib.xml");
         }
 	}
