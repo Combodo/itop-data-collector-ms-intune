@@ -45,7 +45,7 @@ class iTopOSVersionInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopOSVersionInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_osversion.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_osversion.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopOSVersionInTuneCollector-1.csv"));
     }
 

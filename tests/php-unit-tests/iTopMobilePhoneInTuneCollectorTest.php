@@ -46,7 +46,7 @@ class iTopMobilePhoneInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopMobilePhoneInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_mobilephone.raw.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_mobilephone.raw.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopMobilePhoneInTuneCollector.raw-1.csv"));
     }
 

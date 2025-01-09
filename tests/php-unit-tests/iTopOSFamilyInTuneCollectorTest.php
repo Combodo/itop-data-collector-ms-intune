@@ -45,7 +45,7 @@ class iTopOSFamilyInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopOSFamilyInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_osfamily.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_osfamily.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopOSFamilyInTuneCollector-1.csv"));
     }
 

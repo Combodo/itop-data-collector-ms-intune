@@ -46,7 +46,7 @@ class iTopTabletInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopTabletInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_tablet.raw.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_tablet.raw.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopTabletInTuneCollector.raw-1.csv"));
     }
 

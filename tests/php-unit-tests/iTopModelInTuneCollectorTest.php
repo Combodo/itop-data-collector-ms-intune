@@ -74,7 +74,7 @@ class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopModelInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_model.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_model.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopModelInTuneCollector-1.csv"));
     }
 

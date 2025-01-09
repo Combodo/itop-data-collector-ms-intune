@@ -46,7 +46,7 @@ class iTopPCInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopPCInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_pc.raw.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_pc.raw.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopPCInTuneCollector.raw-1.csv"));
     }
 

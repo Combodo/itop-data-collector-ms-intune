@@ -46,7 +46,7 @@ class iTopBrandInTuneCollectorTest extends AbstractCollectorTestCase
         $this->assertTrue($this->oiTopBrandInTuneCollector->Collect());
 
         // Compare output csv
-        $sExpected_content = file_get_contents(APPROOT."/collectors/tests/php-unit-tests/data/expected_brand.csv");
+        $sExpected_content = file_get_contents(__DIR__ ."/data/expected_brand.csv");
         $this->assertEquals($sExpected_content, file_get_contents($this->sDataPath."iTopBrandInTuneCollector-1.csv"));
     }
 
