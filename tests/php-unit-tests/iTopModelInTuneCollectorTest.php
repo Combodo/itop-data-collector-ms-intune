@@ -18,7 +18,7 @@ require_once(APPROOT.'/collectors/src/InTuneCollectionPlan.class.inc.php');
 
 class iTopModelInTuneCollectorTest extends AbstractCollectorTestCase
 {
-    const string WRONG_MODEL_UNKNOWN_TYPE = 'NoUnknownConst';
+    const WRONG_MODEL_UNKNOWN_TYPE = 'NoUnknownConst';
     private iTopModelInTuneCollector $oiTopModelInTuneCollector;
     private string $sUnknownType;
 
