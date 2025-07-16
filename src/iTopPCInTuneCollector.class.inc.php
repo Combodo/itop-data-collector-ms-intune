@@ -49,7 +49,9 @@ class iTopPCInTuneCollector extends InTuneCollector
     {
         $aData = parent::Fetch();
         if ($aData !== false) {
-            $aData['contacts_list'] = "contact_id->email:".$aData['contacts_list'];
+            if ($aData['contacts_list'] != '') {
+                $aData['contacts_list'] = "contact_id->email:" . $aData['contacts_list'];
+            }
         }
 
         return $aData;
