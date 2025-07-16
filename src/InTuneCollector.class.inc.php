@@ -3,6 +3,7 @@
 class InTuneCollector extends JsonCollector
 {
 	protected $oCollectionPlan;
+    protected $bCaseSensitiveLookups;
 
 	/**
 	 * @inheritdoc
@@ -12,7 +13,8 @@ class InTuneCollector extends JsonCollector
 		parent::Init();
 
 		$this->oCollectionPlan = InTuneCollectionPlan::GetPlan();
-	}
+        $this->bCaseSensitiveLookups = (Utils::GetConfigurationValue('case_sensitive_lookups', 'yes') == 'yes');
+    }
 
     /**
      * @inheritdoc

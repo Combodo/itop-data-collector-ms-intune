@@ -21,8 +21,10 @@ class iTopPCInTuneCollector extends InTuneCollector
      */
     protected function InitProcessBeforeSynchro(): void
     {
-        $this->oModelLookup = new LookupTable('SELECT Model AS m WHERE m.type = \'PC\'', array('brand_id_friendlyname', 'name'));
-        $this->oOSVersionLookup = new LookupTable('SELECT OSVersion', array('osfamily_id_friendlyname', 'name'));
+        $sOQL = 'SELECT Model AS m WHERE m.type = \'PC\'';
+        $this->oModelLookup = new LookupTable($sOQL, array('brand_id_friendlyname', 'name'), $this->bCaseSensitiveLookups);
+        $sOQL = 'SELECT OSVersion';
+        $this->oOSVersionLookup = new LookupTable($sOQL, array('osfamily_id_friendlyname', 'name'), $this->bCaseSensitiveLookups);
     }
 
     /**
