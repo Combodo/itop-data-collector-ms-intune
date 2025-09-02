@@ -21,7 +21,7 @@ class iTopMobilePhoneInTuneCollector extends InTuneCollector
     protected function InitProcessBeforeSynchro(): void
     {
         $sOQL = 'SELECT Model AS m WHERE m.type = \'MobilePhone\'';
-        $this->oModelLookup = new LookupTable($sOQL, array('brand_id_friendlyname', 'name'), $this->bCaseSensitiveLookups);
+        $this->oModelLookup = new LookupTable($sOQL, array('brand_id_friendlyname', 'name'), $this->bCaseSensitiveLookups, $this->bIgnoreMappingErrors);
     }
 
     /**
