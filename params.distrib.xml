@@ -219,6 +219,7 @@
 	<!-- Global iTop parameters -->
 	<model_unknown_type>InTuneUnknown</model_unknown_type>
 	<case_sensitive_lookups>yes</case_sensitive_lookups>
+    <ignore_mapping_errors>yes</ignore_mapping_errors>
 
 	<!-- Synchronization parameters -->
 	<contact_to_notify></contact_to_notify>

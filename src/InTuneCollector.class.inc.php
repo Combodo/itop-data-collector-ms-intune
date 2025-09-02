@@ -15,9 +15,7 @@ class InTuneCollector extends JsonCollector
 
 		$this->oCollectionPlan = InTuneCollectionPlan::GetPlan();
         $this->bCaseSensitiveLookups = (Utils::GetConfigurationValue('case_sensitive_lookups', 'yes') == 'yes');
-        // Due to the way InTune objects are typed, don't overload logs with a warning message if no mapping is found
-        // for the CI's model as the CI certainly belongs to another class that is collected as well.
-        $this->bIgnoreMappingErrors = true;
+        $this->bIgnoreMappingErrors = (Utils::GetConfigurationValue('ignore_mapping_errors', 'yes') == 'yes');;
     }
 
     /**
