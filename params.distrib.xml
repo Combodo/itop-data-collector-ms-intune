@@ -15,7 +15,7 @@
 	<itopbrandintunecollector>
 		<ms_class>managedDevice</ms_class>
 		<api_version>1.0</api_version>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>manufacturer</primary_key>
@@ -23,8 +23,6 @@
 		</fields>
 		<defaults/>
 	</itopbrandintunecollector>
-
-    <jsonfile>data/InTuneManagedDevices.json</jsonfile>
 
     <!-- Mobile Phones -->
 	<itopmobilephoneintunecollector>
@@ -216,8 +214,9 @@
 		</collector>
 	</collectors_launch_sequence>
 
-	<!-- Global iTop parameters -->
-	<model_unknown_type>InTuneUnknown</model_unknown_type>
+	<!-- Global parameters -->
+    <jsonfile>data/InTuneManagedDevices.json</jsonfile>
+    <model_unknown_type>InTuneUnknown</model_unknown_type>
 	<case_sensitive_lookups>yes</case_sensitive_lookups>
     <ignore_mapping_errors>yes</ignore_mapping_errors>
 
