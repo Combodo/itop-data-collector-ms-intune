@@ -24,9 +24,11 @@
 		<defaults/>
 	</itopbrandintunecollector>
 
-	<!-- Mobile Phones -->
+    <jsonfile>data/InTuneManagedDevices.json</jsonfile>
+
+    <!-- Mobile Phones -->
 	<itopmobilephoneintunecollector>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -53,7 +55,7 @@
 
 	<!-- Models -->
 	<itopmodelintunecollector>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
@@ -90,7 +92,7 @@
 
 	<!-- OS families -->
 	<itoposfamilyintunecollector>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>operatingSystem</primary_key>
@@ -101,7 +103,7 @@
 
 	<!-- OS Versions -->
 	<itoposversionintunecollector>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>primary_key</primary_key>
@@ -115,7 +117,7 @@
 
 	<!-- PCs -->
 	<itoppcintunecollector>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
@@ -145,7 +147,7 @@
 
 	<!-- Tablets -->
 	<itoptabletintunecollector>
-		<jsonfile>data/InTuneManagedDevices.json</jsonfile>
+		<jsonfile>$jsonfile$</jsonfile>
 		<path>value</path>
 		<fields>
 			<primary_key>id</primary_key>
