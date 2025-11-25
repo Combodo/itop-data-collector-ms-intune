@@ -14,7 +14,7 @@ class InTuneCollectionPlan extends MSCollectionPlan
 
         // Check if InTune Datamodel extension is installed
         Utils::Log(LOG_INFO, '---------- Check InTune Datamodel extension installation ----------');
-        if ($this->bInTuneDatamodelIsInstalled = utils::CheckModuleInstallation('combodo-intune-datamodel')) {
+        if ($this->bInTuneDatamodelIsInstalled = Utils::CheckModuleInstallation('combodo-intune-datamodel')) {
             Utils::Log(LOG_INFO, 'Extension InTune Datamodel has been installed on iTop');
         } else {
             Utils::Log(LOG_INFO, 'Extension InTune Datamodel has not been installed on iTop');
