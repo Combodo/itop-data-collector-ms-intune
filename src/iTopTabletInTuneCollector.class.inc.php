@@ -1,5 +1,6 @@
 <?php
 require_once(APPROOT.'collectors/src/InTuneCollector.class.inc.php');
+require_once(APPROOT.'collectors/src/LookuptableExtended.class.inc.php');
 
 class iTopTabletInTuneCollector extends InTuneCollector
 {
@@ -21,7 +22,9 @@ class iTopTabletInTuneCollector extends InTuneCollector
     protected function InitProcessBeforeSynchro(): void
     {
         $sOQL = 'SELECT Model AS m WHERE m.type = \'Tablet\'';
-        $this->oModelLookup = new LookupTable($sOQL, array('brand_id_friendlyname', 'name'), $this->bCaseSensitiveLookups, $this->bIgnoreMappingErrors);
+        $this->oModelLookup = new LookupTableExtended($sOQL, array('brand_id_friendlyname', 'name'), $this->bCaseSensitiveLookups, $this->bIgnoreMappingErrors);
+        $sOQL = 'SELECT Model AS m ';
+        $this->oModelLookup->SetAllDataInItop($sOQL, array('brand_id_friendlyname', 'name'));
     }
 
     /**
@@ -29,9 +32,16 @@ class iTopTabletInTuneCollector extends InTuneCollector
      */
     protected function ProcessLineBeforeSynchro(&$aLineData, $iLineIndex): void
     {
-        if (!$this->oModelLookup->Lookup($aLineData, array('brand_id', 'model_id'), 'model_id', $iLineIndex))
+        $iRes = $this->oModelLookup->Lookup($aLineData, array('brand_id', 'model_id'), 'model_id', $iLineIndex);
+        switch ($iRes)
         {
-            throw New IgnoredRowException('Unknown Model');
+            case LookupTableExtended::LOOKUP_NOT_FIND:
+                throw New IgnoredRowException('Unknown Model');
+                break;
+
+            case LookupTableExtended::LOOKUP_NOT_FIND_BUT_PRESENT:
+                throw New IgnoredRowException('Model is not the right type (Tablet)');
+                break;
         }
     }
 
